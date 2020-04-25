@@ -76,7 +76,12 @@ public class AN_DoorScript : MonoBehaviour
             {
                 Debug.Log("okk");
                 isOpened = true;
-                rbDoor.AddRelativeTorque(new Vector3(0, 0, 100f)); 
+                for (int i = 0; i < 30; i++)
+                {
+                    int x = 3 * i;
+                    transform.Rotate(0, x, 0);
+                }
+                //rbDoor.AddRelativeTorque(new Vector3(0, 0, 100f)); 
             }
         
         }
