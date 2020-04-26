@@ -37,11 +37,15 @@ public class AN_DoorScript : MonoBehaviour
     JointLimits hingeLim;
     float currentLim;
 
+    //開門的聲音的啦
+    AudioSource audioSource;
+
     void Start()
     {
         rbDoor = GetComponent<Rigidbody>();
         hinge = GetComponent<HingeJoint>();
         HeroInteractive = FindObjectOfType<AN_HeroInteractive>();
+        this.audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -76,7 +80,8 @@ public class AN_DoorScript : MonoBehaviour
             {
                 isOpened = true;
                 
-               
+                FindObjectOfType<AudioManager>().Play("中門");
+                Debug.Log("open");
                 transform.Rotate(0, 0, 90);
                 
                 //rbDoor.AddRelativeTorque(new Vector3(0, 0, 100f)); 
