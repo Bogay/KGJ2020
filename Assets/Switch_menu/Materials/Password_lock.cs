@@ -17,6 +17,7 @@ public class Password_lock : MonoBehaviour
     {
         if (AN_Button.is_passsword_door == 1)
         {
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             SceneManager.LoadScene(2);
         }

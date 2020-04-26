@@ -35,6 +35,7 @@ public class check_password : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (a[0] == 6 && a[1] == 0 && a[2] == 6 && a[3] == 0) a[0] = a[0];
+        if (a[0] == 6 && a[1] == 0 && a[2] == 6 && a[3] == 0)
+            AN_Button.is_passsword_door = 2;
     }
 }

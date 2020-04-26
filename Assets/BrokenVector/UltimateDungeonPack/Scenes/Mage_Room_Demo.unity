@@ -37796,12 +37796,12 @@ PrefabInstance:
     - target: {fileID: 2821185538055456418, guid: 9dd8a3227dc0aa84099496d08718ad7b,
         type: 3}
       propertyPath: m_FocalLength
-      value: 15.79
+      value: 9.774191
       objectReference: {fileID: 0}
     - target: {fileID: 2821185538055456418, guid: 9dd8a3227dc0aa84099496d08718ad7b,
         type: 3}
       propertyPath: field of view
-      value: 50.813957
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 2821185538055456418, guid: 9dd8a3227dc0aa84099496d08718ad7b,
         type: 3}
