@@ -75,10 +75,7 @@ public class AN_Button : MonoBehaviour
 
             }
         }
-        if (is_passsword_door == 2)
-        {
-            DoorObject.Action(); // void in door script to open/close
-        }
+        
     }
 
     bool NearView() // it is true if you near interactive object

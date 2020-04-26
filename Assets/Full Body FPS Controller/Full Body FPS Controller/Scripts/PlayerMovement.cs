@@ -14,6 +14,7 @@ namespace EasySurvivalScripts
 
     public class PlayerMovement : MonoBehaviour
     {
+        public List<NewBehaviourScript1> pointInTime;
         public PlayerStates playerStates;
 
         [Header("Inputs")]
@@ -48,12 +49,15 @@ namespace EasySurvivalScripts
         float _footstepDelay;
         AudioSource _audioSource;
         float footstep_et = 0;
+        bool startRecord = true;
+        bool pressE = false;
 
         // Use this for initialization
         void Start()
         {
             characterController = GetComponent<CharacterController>();
             _audioSource = gameObject.AddComponent<AudioSource>();
+            this.pointInTime = new List<NewBehaviourScript1>();
         }
 
         // Update is called once per frame
@@ -67,6 +71,18 @@ namespace EasySurvivalScripts
 
             //sync footsteps with controller
             PlayFootstepSounds();
+            if (Input.GetKey(KeyCode.B))
+            {
+                this.Play();
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                this.pressE = true;
+            }
+            else
+            {
+                this.pressE = false;
+            }
         }
 
         void HandlePlayerControls()
@@ -194,6 +210,34 @@ namespace EasySurvivalScripts
                 footstep_et = 0;
                 _audioSource.PlayOneShot(FootstepSounds[Random.Range(0, FootstepSounds.Count)]);
             }
+        }
+        /// <summary>
+        /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+        /// </summary>
+        void FixedUpdate()
+        {
+            if (this.startRecord)
+            {
+                this.Record();
+            }
+            
+        }
+        void Record()
+        {
+            this.pointInTime.Add(new NewBehaviourScript1(transform.position, transform.rotation, this.HorzAnimation, this.VertAnimation, this.LandAnimation, this.JumpAnimation, this.pressE));
+        }
+        void Play()
+        {
+            this.startRecord = false;
+            Debug.Log("playing");
+            transform.position = pointInTime[0].pos;
+            transform.rotation = pointInTime[0].rotation;
+            this.HorzAnimation = pointInTime[0].horizontal;
+            this.VertAnimation = pointInTime[0].vertical;
+            this.LandAnimation = pointInTime[0].isGround;
+            this.JumpAnimation = pointInTime[0].jumpAnimation;
+            this.pressE = pointInTime[0].pressE;
+            pointInTime.RemoveAt(0);
         }
 
     }

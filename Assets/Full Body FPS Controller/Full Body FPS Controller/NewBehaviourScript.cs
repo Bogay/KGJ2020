@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewBehaviourScript1 : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
+
     public Text counter1;
     public int count1 = 0;
     // Start is called before the first frame update

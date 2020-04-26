@@ -81,7 +81,7 @@ public class AN_DoorScript : MonoBehaviour
                 
 
             }
-            else 
+            else if(!isOpened && CanOpen & !RedLocked && !BlueLocked)
             {
                 isOpened = true;
                 //FindObjectOfType<AudioManager>().Play("中門");
