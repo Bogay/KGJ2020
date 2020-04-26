@@ -23,6 +23,5 @@ public class NewBehaviourScript1 : MonoBehaviour
     void Update()
     {
         
-
     }
 }
