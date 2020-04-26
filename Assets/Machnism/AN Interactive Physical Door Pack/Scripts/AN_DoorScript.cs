@@ -74,7 +74,6 @@ public class AN_DoorScript : MonoBehaviour
             }
             else if (!isOpened && CanOpen && !RedLocked && !BlueLocked)
             {
-                Debug.Log("okk");
                 isOpened = true;
                 
                
