@@ -38,6 +38,10 @@ public class AN_Button : MonoBehaviour
     float angleView;
     Vector3 direction;
 
+    public static int is_passsword_door = 0;
+
+  
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -62,43 +66,18 @@ public class AN_Button : MonoBehaviour
                 }
                 else anim.SetTrigger("ButtonPress");
             }
-            else if (isValve && RampObject != null) // 3.valve
+            
+            else if (Input.GetKeyDown(KeyCode.E)   && NearView()) // 3.valve
             {
+
+                is_passsword_door = 1;
                 
-                // changing value in script
-                if (Input.GetKey(KeyCode.E) && NearView())
-                {
-                    
-                    if (valveBool)
-                    {
-                        if (!isOpened && CanOpen && current < max) current += speed * Time.deltaTime;
-                        if (isOpened && CanClose && current > min) current -= speed * Time.deltaTime;
 
-                        if (current >= max)
-                        {
-                            isOpened = true;
-                            valveBool = false;
-                        }
-                        else if (current <= min)
-                        {
-                            isOpened = false;
-                            valveBool = false;
-                        }
-                    }
-
-                }
-                else
-                {
-                    if (!isOpened && current > min) current -= speed * Time.deltaTime;
-                    if (isOpened && current < max) current += speed * Time.deltaTime;
-                    valveBool = true;
-                }
-
-                // using value on object
-                transform.rotation = startQuat * Quaternion.Euler(0f, 0f, current * ValveSpeed);
-                if (xRotation) RampObject.rotation = rampQuat * Quaternion.Euler(current, 0f, 0f); // I have a doubt in working correctly
-                else if (yPosition) RampObject.position = new Vector3(RampObject.position.x, startYPosition + current, RampObject.position.z);
             }
+        }
+        if (is_passsword_door == 2)
+        {
+            DoorObject.Action(); // void in door script to open/close
         }
     }
 
