@@ -59,31 +59,35 @@ public class AN_DoorScript : MonoBehaviour
     {
         if (!Locked)
         {
+            
             // key lock checking
             if (HeroInteractive != null && RedLocked && HeroInteractive.RedKey)
             {
+                Debug.Log("open1");
                 RedLocked = false;
                 HeroInteractive.RedKey = false;
             }
             else if (HeroInteractive != null && BlueLocked && HeroInteractive.BlueKey)
             {
+                Debug.Log("open2");
                 BlueLocked = false;
                 HeroInteractive.BlueKey = false;
             }
             
             // opening/closing
-            if (isOpened && CanClose && !RedLocked && !BlueLocked)
+            if (isOpened && CanClose & !RedLocked && !BlueLocked)
             {
                 isOpened = false;
+                
+
             }
-            else if (!isOpened && CanOpen && !RedLocked && !BlueLocked)
+            else 
             {
                 isOpened = true;
-                
-                FindObjectOfType<AudioManager>().Play("中門");
-                Debug.Log("open");
+                //FindObjectOfType<AudioManager>().Play("中門");
+                Debug.Log("open3");
                 transform.Rotate(0, 0, 90);
-                
+
                 //rbDoor.AddRelativeTorque(new Vector3(0, 0, 100f)); 
             }
         

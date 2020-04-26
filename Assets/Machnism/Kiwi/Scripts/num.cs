@@ -12,6 +12,7 @@ public class num : MonoBehaviour
     {
         if (AN_Button.is_passsword_door == 2)
         {
+            Debug.Log("succ");
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             SceneManager.LoadScene(1);
