@@ -76,11 +76,10 @@ public class AN_DoorScript : MonoBehaviour
             {
                 Debug.Log("okk");
                 isOpened = true;
-                for (int i = 0; i < 30; i++)
-                {
-                    int x = 3 * i;
-                    transform.Rotate(0, x, 0);
-                }
+                
+               
+                transform.Rotate(0, 0, 90);
+                
                 //rbDoor.AddRelativeTorque(new Vector3(0, 0, 100f)); 
             }
         
@@ -114,4 +113,5 @@ public class AN_DoorScript : MonoBehaviour
         hingeLim.min = -currentLim;
         hinge.limits = hingeLim;
     }
+    
 }
