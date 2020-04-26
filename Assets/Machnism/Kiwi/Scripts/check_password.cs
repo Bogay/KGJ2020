@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class check_password : MonoBehaviour
 {
-    public int[] a = { 0, 0, 0, 0 };
+    public static int[] a = { 0, 0, 0, 0 };
+
     public void Botton_onclick0()
     {
         if (a[0] > 9) a[0] -= 10;
@@ -26,19 +27,18 @@ public class check_password : MonoBehaviour
         if (a[3] > 9) a[3] -= 10;
         a[3]++;
     }
+
     // Start is called before the first frame update
     void Start()
     {
         
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (a[0] == 6 && a[1] == 0 && a[2] == 6 && a[3] == 0)
-        {
-            Debug.Log("success");
-            AN_Button.is_passsword_door = 2;
-        }
+        
+        
     }
 }

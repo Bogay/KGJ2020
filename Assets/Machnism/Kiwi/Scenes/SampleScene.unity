@@ -292,7 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de180881aa6a3d479e1ba10949fb994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 00000000000000000000000000000000
 --- !u!1 &193267241
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,8 +375,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: a2808f41119cabb4f924563ff064875b, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 193267246}
+        m_MethodName: SceneSwitcher
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -984,7 +983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de180881aa6a3d479e1ba10949fb994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 00000000000000000000000000000000
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,7 +1476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de180881aa6a3d479e1ba10949fb994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 00000000000000000000000000000000
 --- !u!1 &1534661025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,7 +1792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de180881aa6a3d479e1ba10949fb994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 00000000000000000000000000000000
 --- !u!1 &1816879325
 GameObject:
   m_ObjectHideFlags: 0
