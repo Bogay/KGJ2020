@@ -44,10 +44,19 @@ public class cam_switch : MonoBehaviour
             cam2.SetActive(false);
             obj2.SetActive(false);
         }
+        else if (btn_return.rtrn)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            cam1.SetActive(true);
+            obj1.SetActive(true);
+            cam2.SetActive(false);
+            obj2.SetActive(false);
+        }
         else if (AN_Button.is_passsword_door == 1)
         {
             // 觸發並開始解密碼
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             cam2.SetActive(true);
             obj2.SetActive(true);

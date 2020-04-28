@@ -14,8 +14,8 @@ public class AN_Button : MonoBehaviour
     public AN_DoorScript DoorObject;
     [Space]
     [Tooltip("Any object for ramp/elevator baheviour")]
-    public Transform RampObject;
-    [Tooltip("Door can be opened")]
+    //public Transform RampObject;
+    //[Tooltip("Door can be opened")]
     public bool CanOpen = true;
     [Tooltip("Door can be closed")]
     public bool CanClose = true;
@@ -27,7 +27,7 @@ public class AN_Button : MonoBehaviour
     [Tooltip("True for vertical movenment by valve (if xRotation is false)")]
     public bool yPosition = false;
     public float max = 90f, min = 0f, speed = 5f;
-    bool valveBool = true;
+    //bool valveBool = true;
     float current, startYPosition;
     Quaternion startQuat, rampQuat;
 
@@ -45,9 +45,9 @@ public class AN_Button : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        startYPosition = RampObject.position.y;
+        //startYPosition = RampObject.position.y;
         startQuat = transform.rotation;
-        rampQuat = RampObject.rotation;
+        //rampQuat = RampObject.rotation;
     }
 
     void Update()

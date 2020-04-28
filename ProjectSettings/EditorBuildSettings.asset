@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BrokenVector/UltimateDungeonPack/Scenes/Mage_Room_Demo.unity
     guid: b94ee59f12f411f488e6df197429e012
-  - enabled: 1
+  - enabled: 0
     path: Assets/Machnism/Kiwi/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

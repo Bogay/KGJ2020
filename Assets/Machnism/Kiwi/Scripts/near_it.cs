@@ -12,7 +12,7 @@ public class near_it : MonoBehaviour
         Debug.Log("suc");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneManager.LoadScene(1);
+        ;
     }
     
 }

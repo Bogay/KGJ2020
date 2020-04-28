@@ -129,6 +129,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1285612545386684, guid: 276048d2ee70e2a41b03820dc34e5366, type: 3}
+      propertyPath: m_Name
+      value: FPS Controller Ethan
+      objectReference: {fileID: 0}
     - target: {fileID: 4894539729070060, guid: 276048d2ee70e2a41b03820dc34e5366, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -173,23 +177,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 143724496767096416, guid: 276048d2ee70e2a41b03820dc34e5366,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.76
+      objectReference: {fileID: 0}
     - target: {fileID: 812621612, guid: 276048d2ee70e2a41b03820dc34e5366, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.762
-      objectReference: {fileID: 0}
-    - target: {fileID: 1285612545386684, guid: 276048d2ee70e2a41b03820dc34e5366, type: 3}
-      propertyPath: m_Name
-      value: FPS Controller Ethan
       objectReference: {fileID: 0}
     - target: {fileID: 114641675298834146, guid: 276048d2ee70e2a41b03820dc34e5366,
         type: 3}
       propertyPath: mouseSensitivity
       value: 149.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 143724496767096416, guid: 276048d2ee70e2a41b03820dc34e5366,
-        type: 3}
-      propertyPath: m_Height
-      value: 1.76
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276048d2ee70e2a41b03820dc34e5366, type: 3}
