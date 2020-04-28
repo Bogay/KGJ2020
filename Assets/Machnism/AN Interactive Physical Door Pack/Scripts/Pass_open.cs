@@ -15,7 +15,7 @@ public class Pass_open : MonoBehaviour
     {
         if (AN_Button.is_passsword_door == 2)
         {
-            transform.Rotate(0, 0, 90);
+            transform.Rotate(0, 0, -60);
         }
     }
 }
