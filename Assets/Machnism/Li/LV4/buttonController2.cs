@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class buttonController2 : MonoBehaviour
 {
-    public GameObject playform;
+    public static bool still = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +21,17 @@ public class buttonController2 : MonoBehaviour
     /// OnTriggerStay is called once per frame for every Collider other
     /// that is touching the trigger.
     /// </summary>
-    /// <param name="other">The other Collider involved in this collision.</param>
+    /// <param name = "other">The other Collider involved in this collision.</param>
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            this.playform.GetComponent<PlatformControler>().standing = true;
+
+            PlatformControler.standing = true;
+            still = true;
         }
+        else
+            still = false;
+        
     }
 }
