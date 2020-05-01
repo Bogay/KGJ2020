@@ -28,10 +28,8 @@ public class buttonController2 : MonoBehaviour
         {
 
             PlatformControler.standing = true;
-            still = true;
+            
         }
-        else
-            still = false;
         
     }
 }

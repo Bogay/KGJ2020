@@ -20,7 +20,7 @@ public class PlatformControler : MonoBehaviour
     void Update()
     {
         if (standing == true)
-        {
+        {      
             if (this.moved == false)
             {
                 Debug.Log("move");
@@ -63,7 +63,7 @@ public class PlatformControler : MonoBehaviour
             yield return null;
             if (!standing && !buttonController2.still)
                 break;
-            yield return new WaitForSeconds(0.2f);//0.1秒后继续执行for循环
+            //yield return new WaitForSeconds(0.2f);//0.1秒后继续执行for循环
         }
         this.rid.velocity = Vector3.zero;
         this.rid.isKinematic = true;
