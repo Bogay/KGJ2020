@@ -9,7 +9,7 @@ public class Stay_trigger : MonoBehaviour
     public float moveTime = 2.5f;
     public static bool standing = false;
     Rigidbody rid;
-    bool moved = false;
+
 
     void Start()
     {

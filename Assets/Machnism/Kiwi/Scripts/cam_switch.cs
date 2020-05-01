@@ -6,7 +6,7 @@ public class cam_switch : MonoBehaviour
 {
     public GameObject cam1, cam2; //兩個不同的攝影機
     public GameObject obj1, obj2; //兩個不同的GameObject
-
+    public bool first_pass = true;
     void Awake()
     {
 
@@ -32,7 +32,7 @@ public class cam_switch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (check_password.a[0] == 6 && check_password.a[1] == 0 && check_password.a[2] == 6 && check_password.a[3] == 0)
+        if (check_password.a[0] == 6 && check_password.a[1] == 0 && check_password.a[2] == 6 && check_password.a[3] == 0 && first_pass)
         {
             // 答對密碼切回主畫面
 
@@ -43,11 +43,14 @@ public class cam_switch : MonoBehaviour
             obj1.SetActive(true);
             cam2.SetActive(false);
             obj2.SetActive(false);
+            first_pass = false;
         }
         else if (btn_return.rtrn)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            AN_Button.is_passsword_door = 0;
+            btn_return.rtrn = false;
             cam1.SetActive(true);
             obj1.SetActive(true);
             cam2.SetActive(false);

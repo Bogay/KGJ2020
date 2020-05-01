@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pass_open : MonoBehaviour
+public class passwprd_bye : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,12 +13,9 @@ public class Pass_open : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (AN_Button.is_passsword_door == 2)
+        if (check_password.a[0] == 6 && check_password.a[1] == 0 && check_password.a[2] == 6 && check_password.a[3] == 0 )
         {
-            Debug.Log("first time");
-            transform.Rotate(0, 0, -60);
-         
-            AN_Button.is_passsword_door = 10;
+            Destroy(gameObject);
         }
     }
 }
