@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Machnism/Kiwi/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Ending_Scene/Endding.unity
+    guid: 54e6d231f971e604ba845ff62ddc3bf2
   m_configObjects: {}
