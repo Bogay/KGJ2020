@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class plate_easy : MonoBehaviour
+public class doorManager : MonoBehaviour
 {
+    public static bool door1_1 = false;
+    public lightController button1_1, button1_2;
+
     // Start is called before the first frame update
-    public static bool stand = false;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (stand == true && transform.position.y<=5.285)
+        if (button1_1.standing == true && button1_2.standing == true)
         {
-            
-            transform.position += new Vector3(0f, 6f, 0f);
-            stand = false;
+            door1_1 = true;
         }
-
     }
 }

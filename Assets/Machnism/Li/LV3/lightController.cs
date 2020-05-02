@@ -5,6 +5,7 @@ using UnityEngine;
 public class lightController : MonoBehaviour
 {
     public bool standing = false;
+    public static bool illuimnate_it_1 = false;
     public Material lightMaterial, darkMaterial;
     MeshRenderer ren;
     // Start is called before the first frame update
@@ -19,10 +20,12 @@ public class lightController : MonoBehaviour
         if (this.standing == true)
         {
             this.ren.material = this.lightMaterial;
+            illuimnate_it_1 = true;
         }
         else
         {
             this.ren.material = this.darkMaterial;
+            illuimnate_it_1 = false;
         }
     }
 }

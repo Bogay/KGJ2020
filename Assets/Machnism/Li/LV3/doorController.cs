@@ -5,7 +5,7 @@ using UnityEngine;
 public class doorController : MonoBehaviour
 {
     Rigidbody rid;
-    bool hasTrigger = false;
+    bool first_time_open = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,19 +15,26 @@ public class doorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.door1_1 == true)
+        /*/if (GameManager.door1_1 == true)
         {
             if (this.hasTrigger == false)
             {
                 StartCoroutine(this.opening());
                 this.hasTrigger = true;
             }
+        }*/
+        if (lightController.illuimnate_it_1  && first_time_open && doorManager.door1_1 == true)
+        {
+            StartCoroutine(this.opening());
+            first_time_open = false;
         }
+        
     }
     IEnumerator opening()
     {
-        this.rid.velocity = new Vector3(-2f, 0f, 0f);
+        transform.Rotate(0, 0, 90);
         yield return new WaitForSeconds(2.6f);
         this.rid.velocity = Vector3.zero;
     }
+    
 }
