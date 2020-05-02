@@ -50,9 +50,9 @@ public class AN_DoorScript : MonoBehaviour
 
     void Update()
     {
-        if ( !Remote && Input.GetKeyDown(KeyCode.E) && NearView() )
+        if (!Remote && (NearView() && Input.GetKeyDown(KeyCode.E) || shadowNear()))
             Action();
-        
+
     }
 
     public void Action() // void to open/close door
@@ -100,6 +100,22 @@ public class AN_DoorScript : MonoBehaviour
         direction = transform.position - Camera.main.transform.position;
         angleView = Vector3.Angle(Camera.main.transform.forward, direction);
         if (distance < 3f) return true; // angleView < 35f && 
+        else return false;
+    }
+    bool shadowNear()
+    {
+        GameObject[] shadow;
+        shadow = GameObject.FindGameObjectsWithTag("shadow");
+        float dis = 99999f;
+        foreach (GameObject sha in shadow)
+        {
+            float d = Vector3.Distance(transform.position, sha.transform.position);
+            if (d < dis)
+            {
+                dis = d;
+            }
+        }
+        if (dis < 2f) return true;
         else return false;
     }
 

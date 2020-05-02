@@ -19,7 +19,7 @@ public class Stay_trigger_light : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player" )
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "shadow")
         {
             light_1.GetComponent<lightController>().standing = true;
 

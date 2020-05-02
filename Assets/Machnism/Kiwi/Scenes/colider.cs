@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class Password_lock : MonoBehaviour
+public class colider : MonoBehaviour
 {
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("switch");
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "shadow")
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +22,6 @@ public class Password_lock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (AN_Button.is_passsword_door == 1)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            SceneManager.LoadScene(2);
-        }
+        
     }
 }

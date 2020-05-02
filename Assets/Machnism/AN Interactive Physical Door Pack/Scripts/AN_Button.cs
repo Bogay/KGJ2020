@@ -54,7 +54,7 @@ public class AN_Button : MonoBehaviour
     {
         if (!Locked)
         {
-            if (Input.GetKeyDown(KeyCode.E) && !isValve && DoorObject != null  && NearView()) // 1.lever and 2.button
+            if ((Input.GetKeyDown(KeyCode.E) && NearView() || shadowNear()) && !isValve && DoorObject != null  ) // 1.lever and 2.button
             {
                 
                 DoorObject.Action(); // void in door script to open/close
@@ -84,6 +84,22 @@ public class AN_Button : MonoBehaviour
         direction = transform.position - Camera.main.transform.position;
         angleView = Vector3.Angle(Camera.main.transform.forward, direction);
         if (angleView < 45f && distance < 2f) return true;
+        else return false;
+    }
+    bool shadowNear()
+    {
+        GameObject[] shadow;
+        shadow = GameObject.FindGameObjectsWithTag("shadow");
+        float dis = 99999f;
+        foreach (GameObject sha in shadow)
+        {
+            float d = Vector3.Distance(transform.position, sha.transform.position);
+            if (d < dis)
+            {
+                dis = d;
+            }
+        }
+        if (dis < 2f) return true;
         else return false;
     }
 }

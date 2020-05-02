@@ -21,7 +21,7 @@ public class Stay_trigger : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player" && plate.transform.position.y<5.25)
+        if ((other.gameObject.tag == "Player" || other.gameObject.tag == "shadow") && plate.transform.position.y<5.7)
         {
 
             rid.isKinematic = false;

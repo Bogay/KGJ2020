@@ -13,6 +13,10 @@ public class AN_DoorKey : MonoBehaviour
     float angleView;
     Vector3 direction;
 
+    GameObject father_gameObject;   //宣告一個GameObject(用來放取得的子物件)。
+    public Timer sha_hold;
+    public static bool first_clone = false;
+
     private void Start()
     {
         hero = FindObjectOfType<AN_HeroInteractive>(); // key will get up and it will saved in "inventary"
@@ -20,12 +24,18 @@ public class AN_DoorKey : MonoBehaviour
 
     void Update()
     {
-        if ( NearView() && Input.GetKeyDown(KeyCode.E) )
+        if (NearView() && Input.GetKeyDown(KeyCode.E))
         {
             if (isRedKey) hero.RedKey = true;
             else hero.BlueKey = true;
-            Destroy(gameObject);
+            gameObject.transform.parent = null;
+            father_gameObject = GameObject.Find("unitychan");
+            gameObject.transform.parent = father_gameObject.transform;
+            Debug.Log(father_gameObject);
+            first_clone = true;
+
         }
+        
     }
 
     bool NearView() // it is true if you near interactive object
@@ -34,6 +44,22 @@ public class AN_DoorKey : MonoBehaviour
         direction = transform.position - Camera.main.transform.position;
         angleView = Vector3.Angle(Camera.main.transform.forward, direction);
         if (distance < 2f) return true; // angleView < 35f && 
+        else return false;
+    }
+    bool shadowNear()
+    {
+        GameObject[] shadow;
+        shadow = GameObject.FindGameObjectsWithTag("shadow");
+        float dis = 99999f;
+        foreach (GameObject sha in shadow)
+        {
+            float d = Vector3.Distance(transform.position, sha.transform.position);
+            if (d < dis)
+            {
+                dis = d;
+            }
+        }
+        if (dis < 2f) return true;
         else return false;
     }
 }

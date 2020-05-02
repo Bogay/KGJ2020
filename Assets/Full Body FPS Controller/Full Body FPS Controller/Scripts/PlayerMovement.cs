@@ -14,6 +14,7 @@ namespace EasySurvivalScripts
 
     public class PlayerMovement : MonoBehaviour
     {
+        public bool is_shadow = false;
         public List<NewBehaviourScript1> pointInTime;
         public PlayerStates playerStates;
 
@@ -24,11 +25,11 @@ namespace EasySurvivalScripts
         public string JumpInput = "Jump";
 
         [Header("Player Motor")]
-        [Range(1f,15f)]
+        [Range(1f, 15f)]
         public float walkSpeed;
-        [Range(1f,15f)]
+        [Range(1f, 15f)]
         public float runSpeed;
-        [Range(1f,15f)]
+        [Range(1f, 15f)]
         public float JumpForce;
         public Transform FootLocation;
 
@@ -51,18 +52,33 @@ namespace EasySurvivalScripts
         float footstep_et = 0;
         bool startRecord = true;
         bool pressE = false;
+        bool shadowJump = false;
 
+        private void Awake()
+        {
+            this.pointInTime = new List<NewBehaviourScript1>();
+        }
         // Use this for initialization
         void Start()
         {
+            if (this.is_shadow == false)
+            {
+                this.pointInTime.Clear();
+            }
             characterController = GetComponent<CharacterController>();
             _audioSource = gameObject.AddComponent<AudioSource>();
-            this.pointInTime = new List<NewBehaviourScript1>();
         }
 
         // Update is called once per frame
         void Update()
         {
+            if(!this.is_shadow)
+            {
+                if (this.startRecord)
+                {
+                    this.Record();
+                }
+            }
             //handle controller
             HandlePlayerControls();
 
@@ -71,24 +87,34 @@ namespace EasySurvivalScripts
 
             //sync footsteps with controller
             PlayFootstepSounds();
-            if (Input.GetKey(KeyCode.B))
+            if (this.is_shadow == true)
             {
                 this.Play();
             }
-            if (Input.GetKey(KeyCode.E))
-            {
-                this.pressE = true;
-            }
-            else
-            {
-                this.pressE = false;
-            }
+
+
+        }
+        private void FixedUpdate()
+        {
+            
+            
         }
 
         void HandlePlayerControls()
         {
-            float hInput = Input.GetAxisRaw(HorizontalInput);
-            float vInput = Input.GetAxisRaw(VerticalInput);
+            float hInput;
+            float vInput;
+            if (this.is_shadow == false)
+            {
+                hInput = Input.GetAxisRaw(HorizontalInput);
+                vInput = Input.GetAxisRaw(VerticalInput);
+            }
+            else
+            {
+                hInput = 0f;
+                vInput = 0f;
+            }
+
 
             Vector3 fwdMovement = characterController.isGrounded == true ? transform.forward * vInput : Vector3.zero;
             Vector3 rightMovement = characterController.isGrounded == true ? transform.right * hInput : Vector3.zero;
@@ -111,7 +137,7 @@ namespace EasySurvivalScripts
                     else
                         playerStates = PlayerStates.Running;
 
-                    _footstepDelay = (2/_speed);
+                    _footstepDelay = (2 / _speed);
                 }
             }
             else
@@ -120,7 +146,12 @@ namespace EasySurvivalScripts
 
         void Jump()
         {
-            if (Input.GetButtonDown(JumpInput))
+            if (Input.GetButtonDown(JumpInput) && this.is_shadow == false)
+            {
+                StartCoroutine(PerformJumpRoutine());
+                JumpAnimation = true;
+            }
+            if (this.is_shadow == true && this.shadowJump == true)
             {
                 StartCoroutine(PerformJumpRoutine());
                 JumpAnimation = true;
@@ -214,30 +245,25 @@ namespace EasySurvivalScripts
         /// <summary>
         /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
         /// </summary>
-        void FixedUpdate()
-        {
-            if (this.startRecord)
-            {
-                this.Record();
-            }
-            
-        }
+
         void Record()
         {
-            this.pointInTime.Add(new NewBehaviourScript1(transform.position, transform.rotation, this.HorzAnimation, this.VertAnimation, this.LandAnimation, this.JumpAnimation, this.pressE));
+            this.pointInTime.Add(new NewBehaviourScript1(transform.position, transform.rotation, this.HorzAnimation, this.VertAnimation, this.LandAnimation, Input.GetButtonDown(JumpInput), this.pressE));
         }
         void Play()
         {
             this.startRecord = false;
-            Debug.Log("playing");
-            transform.position = pointInTime[0].pos;
-            transform.rotation = pointInTime[0].rotation;
-            this.HorzAnimation = pointInTime[0].horizontal;
-            this.VertAnimation = pointInTime[0].vertical;
-            this.LandAnimation = pointInTime[0].isGround;
-            this.JumpAnimation = pointInTime[0].jumpAnimation;
-            this.pressE = pointInTime[0].pressE;
-            pointInTime.RemoveAt(0);
+            if (this.pointInTime.Count > 0)
+            {
+                transform.position = pointInTime[0].pos;
+                transform.rotation = pointInTime[0].rotation;
+                this.HorzAnimation = pointInTime[0].horizontal;
+                this.VertAnimation = pointInTime[0].vertical;
+                this.LandAnimation = pointInTime[0].isGround;
+                this.shadowJump = pointInTime[0].jumpAnimation;
+                pointInTime.RemoveAt(0);
+            }
+
         }
 
     }

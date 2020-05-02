@@ -44,7 +44,7 @@ public class AN_PlugScript : MonoBehaviour
 
     void Interaction()
     {
-        if (NearView() && Input.GetKeyDown(KeyCode.E) && !follow)
+        if ((NearView() && Input.GetKeyDown(KeyCode.E) || shadowNear()) && !follow)
         {
             isConnected = false; // unfrozen
             follow = true;
@@ -58,7 +58,7 @@ public class AN_PlugScript : MonoBehaviour
             if (followFlag)
             {
                 distance = Vector3.Distance(transform.position, Camera.main.transform.position);
-                if (distance > 3f || Input.GetKeyDown(KeyCode.E))
+                if (distance > 3f || Input.GetKeyDown(KeyCode.E) == true)
                 {
                     follow = false;
                 }
@@ -81,7 +81,23 @@ public class AN_PlugScript : MonoBehaviour
         distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         direction = transform.position - Camera.main.transform.position;
         angleView = Vector3.Angle(Camera.main.transform.forward, direction);
-        if (distance < 3f && angleView <35f) return true;
+        if (distance < 3f && angleView < 35f) return true;
+        else return false;
+    }
+    bool shadowNear()
+    {
+        GameObject[] shadow;
+        shadow = GameObject.FindGameObjectsWithTag("shadow");
+        float dis = 99999f;
+        foreach (GameObject sha in shadow)
+        {
+            float d = Vector3.Distance(transform.position, sha.transform.position);
+            if (d < dis)
+            {
+                dis = d;
+            }
+        }
+        if (dis < 2f) return true;
         else return false;
     }
 
