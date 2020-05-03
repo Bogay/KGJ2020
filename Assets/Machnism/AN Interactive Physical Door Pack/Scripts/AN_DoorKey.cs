@@ -32,9 +32,15 @@ public class AN_DoorKey : MonoBehaviour
             father_gameObject = GameObject.Find("unitychan");
             gameObject.transform.parent = father_gameObject.transform;
             Debug.Log(father_gameObject);
+            
             first_clone = true;
 
         }
+        /*if (first_clone)
+        {
+            Debug.Log(father_gameObject.transform);
+            gameObject.transform.parent = father_gameObject.transform;
+        }*/
         
     }
 

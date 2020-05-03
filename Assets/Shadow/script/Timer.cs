@@ -22,11 +22,13 @@ public class Timer : MonoBehaviour
         //now_player.GetComponent<EasySurvivalScripts.PlayerMovement>().is_shadow = false;
         this.time = this.gameTime;
         text.text = this.gameTime.ToString();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        key_prefab_drop = GameObject.Find("Door_key(Clone)");
         if (this.start == false)
         {
             StartCoroutine(this.CountDown());
@@ -37,7 +39,11 @@ public class Timer : MonoBehaviour
             this.Restart();
         }
         if (this.time == 1)
+        {
+            key_prefab_drop.transform.transform.parent = null;
+            Debug.Log(key_prefab_drop.transform.position);
             ShadowSaver.keypos = key_prefab_drop.transform.position;
+        }
     }
     IEnumerator CountDown()
     {
@@ -49,6 +55,7 @@ public class Timer : MonoBehaviour
     }
     void Restart()
     {
+       
         this.time = this.gameTime;
         text.text = this.gameTime.ToString();
         this.start = false;

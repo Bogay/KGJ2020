@@ -9,14 +9,16 @@ public class ShadowSaver : MonoBehaviour
     public static List<List<NewBehaviourScript1>> shadow2 = new List<List<NewBehaviourScript1>>();
     public static int a = 10;
     public Transform playerMap;
-    public static Vector3 keypos;
+    public static Vector3 keypos = new Vector3(-5.723f, 10.647f, -13f);
     public GameObject key_prefab;
+    public static GameObject key_clone;
+
     private void Start()
     {
-        if (AN_DoorKey.first_clone)
-        {
-            GameObject key_clone = Instantiate(key_prefab, keypos, Quaternion.identity);
-        }
+
+        Debug.Log(keypos);
+        key_clone = Instantiate(key_prefab, keypos, Quaternion.identity);
+        
         
     }
     private void Awake()
