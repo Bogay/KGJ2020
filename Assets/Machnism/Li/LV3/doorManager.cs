@@ -20,5 +20,7 @@ public class doorManager : MonoBehaviour
         {
             door1_1 = true;
         }
+        else
+            door1_1 = false;
     }
 }

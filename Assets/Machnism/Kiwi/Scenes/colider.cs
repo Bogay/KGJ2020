@@ -10,6 +10,8 @@ public class colider : MonoBehaviour
         Debug.Log("switch");
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "shadow")
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             SceneManager.LoadScene(2);
         }
     }

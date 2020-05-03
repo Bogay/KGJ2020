@@ -30,10 +30,11 @@ public class doorController : MonoBehaviour
             first_time_open = false;
             open_sure = true;
         }
-        else if (open_sure)
+        else if (open_sure&& doorManager.door1_1 == false)
         {
             transform.Rotate(0, 0, -90);
             open_sure = false;
+            first_time_open = true;
         }
 
         
