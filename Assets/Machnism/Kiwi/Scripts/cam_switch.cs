@@ -33,7 +33,7 @@ public class cam_switch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((check_password.a[0] == 6 && check_password.a[1] == 0 && check_password.a[2] == 6 && check_password.a[3] == 0 && first_pass)||sha.time==0)
+        if (check_password.a[0] == 6 && check_password.a[1] == 0 && check_password.a[2] == 6 && check_password.a[3] == 0 && first_pass)
         {
             // 答對密碼切回主畫面
 

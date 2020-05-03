@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public void Playgame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene(1);
     }
     public void Quitgame()

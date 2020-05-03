@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -44,6 +44,10 @@ public class Timer : MonoBehaviour
             Debug.Log(key_prefab_drop.transform.position);
             ShadowSaver.keypos = key_prefab_drop.transform.position;
         }
+        if (Input.GetKey(KeyCode.R))
+        {
+            this.Restart();
+        }
     }
     IEnumerator CountDown()
     {
@@ -57,12 +61,12 @@ public class Timer : MonoBehaviour
     {
        
         this.time = this.gameTime;
-        text.text = this.gameTime.ToString();
+        text.text = "0";
         this.start = false;
         this.player.is_shadow = true;
         ShadowSaver.shadow2.Add(this.player.pointInTime);
         this.player.is_shadow = false;
         firstScene = false;
-        EditorSceneManager.LoadScene(this.sceneName);
+        SceneManager.LoadScene(this.sceneName);
     }
 }
