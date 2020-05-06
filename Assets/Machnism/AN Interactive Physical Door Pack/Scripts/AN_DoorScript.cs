@@ -24,6 +24,7 @@ public class AN_DoorScript : MonoBehaviour
     [Range(0f, 4f)]
     [Tooltip("Speed for door opening, degrees per sec")]
     public float OpenSpeed = 3f;
+    public bool final = false;
 
     // NearView()
     float distance;
@@ -50,7 +51,9 @@ public class AN_DoorScript : MonoBehaviour
 
     void Update()
     {
-        if (!Remote && (NearView() && Input.GetKeyDown(KeyCode.E) || shadowNear()))
+        if (!Remote && (NearView() && Input.GetKeyDown(KeyCode.E) || shadowNear())&&!final)
+            Action();
+        else if(!Remote && (NearView() && Input.GetKeyDown(KeyCode.E) ) && final)
             Action();
 
     }
@@ -86,7 +89,7 @@ public class AN_DoorScript : MonoBehaviour
                 isOpened = true;
                 //FindObjectOfType<AudioManager>().Play("中門");
                 Debug.Log("open3");
-                transform.Rotate(0, 0, 90);
+                transform.Rotate(0, 0, 60);
 
                 //rbDoor.AddRelativeTorque(new Vector3(0, 0, 100f)); 
             }
@@ -127,6 +130,7 @@ public class AN_DoorScript : MonoBehaviour
         }
         else
         {
+            
             // currentLim = hinge.angle; // door will closed from current opened angle
             if (currentLim > 1f)
                 currentLim -= .5f * OpenSpeed;

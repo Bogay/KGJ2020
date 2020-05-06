@@ -175,4 +175,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRedKey: 1
-  sha_hold: {fileID: 0}
+  fdoor: {fileID: 9185506813984511452, guid: 30ba9d7422f8855419e428f2796d042d, type: 3}
